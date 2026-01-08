@@ -109,9 +109,6 @@ def enjoyment_vs_playtime_graph():
     plt.show()
     return 0
     
-def enjoyment_vs_number_of_reviews_by_reviewer():
-    """Plots a bar graph that compares game recommendation based on the number of Steam reviews written. """
-    return
 
 def main():
     return
