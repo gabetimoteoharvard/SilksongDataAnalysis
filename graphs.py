@@ -111,11 +111,11 @@ def enjoyment_vs_playtime_graph():
     plt.show()
     return 0
     
-def double_word_analysis():
+def word_analysis(file: str):
     x_pl, y_pl, label = [], [], []
    
     try:
-        with open('double_word_data', 'r') as f:
+        with open(file, 'r') as f:
                 data = json.load(f)
         
         for text in data:
@@ -146,7 +146,6 @@ def double_word_analysis():
 
 
 def main():
-    double_word_analysis()
     return
 
 if __name__ == "__main__":
