@@ -1,5 +1,7 @@
 import json
 import matplotlib.pyplot as plt
+import plotly.express as px
+import pandas as pd
 import numpy as np
 
 def review_time_breakdown():
@@ -109,8 +111,42 @@ def enjoyment_vs_playtime_graph():
     plt.show()
     return 0
     
+def double_word_analysis():
+    x_pl, y_pl, label = [], [], []
+   
+    try:
+        with open('double_word_data', 'r') as f:
+                data = json.load(f)
+        
+        for text in data:
+            text_positive_ratio = data[text]["positive"]/data[text]["total"]
+            x_pl.append(data[text]["total"])
+            y_pl.append(text_positive_ratio)
+            label.append(text)
+            
+    except Exception as e:
+        print(f'Error creating graph: {e}')
+
+    df = pd.DataFrame({
+        'Number of Reviews': x_pl,
+        'Positivity': y_pl,
+        'Custom_Label': label
+    })
+
+    fig = px.scatter(df, 
+                 x="Number of Reviews", 
+                 y="Positivity", 
+                hover_name="Custom_Label",
+                color="Positivity") 
+
+    fig.show()
+
+
+    return
+
 
 def main():
+    double_word_analysis()
     return
 
 if __name__ == "__main__":

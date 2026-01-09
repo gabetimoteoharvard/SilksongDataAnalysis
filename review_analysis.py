@@ -10,11 +10,9 @@ def process(string):
     for ch in string:
         if ch not in symbols:
             new_str += ch
-    return new_str
+    return new_str  
 
-    
-
-def main():
+def get_double_word_json():
     double_word_frequency = {} # structure - 'word1 word2' : {'total': int, 'negative': int, 'positive': int}
 
     try:
@@ -46,9 +44,12 @@ def main():
         
     except Exception as e:
         print(f'Error processing file: {e}')
-        
-    filtered_ = dict(filter(lambda x: x[1]['total'] >= 100, double_word_frequency.items()))
-    make_json_file(filtered_)
+
+    filtered_ = dict(filter(lambda x: x[1]['total'] >= 1000, double_word_frequency.items()))
+    make_json_file(filtered_, filename="double_word_data")
+
+def main():
+    return
 
 if __name__ == "__main__":
     main()
