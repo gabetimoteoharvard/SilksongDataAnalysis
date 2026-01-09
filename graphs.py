@@ -144,8 +144,61 @@ def word_analysis(file: str):
 
     return
 
+def boss_analysis(act: int):
+    x = []
+    y = []
+    labels = []
+
+    try:
+        with open('data_json/bosses.json', 'r') as f:
+            boss_data = json.load(f)
+        
+        with open('skong', 'r') as f:
+            data = json.load(f)
+        
+        act_analysis = f'act {act}'
+        for boss in boss_data[act_analysis]:
+            x_ = 0 # number of reviews
+            y_ = 0 # positivity score
+            
+            for review in data["reviews"]:
+
+                review_content = review["review"]
+                positive = review["voted_up"]
+
+                if boss not in review_content:
+                    continue
+
+                x_ += 1
+                if positive:
+                    y_ += 1
+            
+            y_ = y_/x_
+            x.append(x_)
+            y.append(y_)
+            labels.append(boss)
+        
+    except Exception as e:
+        print(f"Error processing file: {e}")
+
+    df = pd.DataFrame({
+        'Number of Reviews': x,
+        'Positivity': y,
+        'Custom_Label': labels
+    })
+
+    fig = px.scatter(df, 
+                 x="Number of Reviews", 
+                 y="Positivity", 
+                hover_name="Custom_Label",
+                color="Positivity") 
+
+    fig.show()
+
+    return 
 
 def main():
+    boss_analysis(2)
     return
 
 if __name__ == "__main__":
