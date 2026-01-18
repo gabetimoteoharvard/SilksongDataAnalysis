@@ -3,6 +3,8 @@
 ## About Project
 This project scrapes Steam review data from Team Cherry's Hollow Knight: Silksong. The game has currently over 100,000 Steam reviews, and by analyzing this data I hope to find some interesting patterns. 
 
+<img src="data_graphs/steam_banner.png" height=600px width=600px>
+
 ## How to Scrape Data
 All the data used in our code is currently inside the 'skong' json file, which is ommitted here due to size. The file, however, can be obtained
 by running the code in 'data_scrape.py.' To run it, just run it as a normal Python script, and the file will be created at your current directory. 
