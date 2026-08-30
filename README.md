@@ -11,7 +11,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Field-Data%20Science-blue">
   <img src="https://img.shields.io/badge/Dataset-100k%2B%20Reviews-green">
-  <img src="https://img.shields.io/badge/Status-In%20Development-yellow">
 </p>
 
 ---
